@@ -5,7 +5,7 @@ import FavoritesPage from "./pages/FavoritesPage";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/ra16-homeworks-redux-toolkit">
       <nav
         style={{
           padding: "16px",
