@@ -4,6 +4,7 @@ import type { AppDispatch, RootState } from "../store";
 import { searchMovies, addToFavorites } from "../features/movies/moviesSlice";
 import MovieCard from "../components/MovieCard";
 import LoadingSpinner from "../components/LoadingSpinner";
+import SearchBar from "../components/SearchBar";
 
 export default function HomePage() {
   const [query, setQuery] = useState("");
@@ -22,16 +23,11 @@ export default function HomePage() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Поиск фильмов</h1>
-      <form onSubmit={handleSearch} style={{ marginBottom: "20px" }}>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Введите название фильма..."
-          style={{ padding: "8px", width: "300px", marginRight: "10px" }}
-        />
-        <button type="submit">Найти</button>
-      </form>
+      <SearchBar
+        query={query}
+        onQueryChange={setQuery}
+        onSearch={handleSearch}
+      />
 
       {error && (
         <div style={{ color: "red", marginBottom: "20px" }}>{error}</div>
